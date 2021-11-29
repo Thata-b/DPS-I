@@ -1,0 +1,163 @@
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<script src="https://kit.fontawesome.com/56a20fa3a4.js" crossorigin="anonymous"></script>
+	<title>Home Page</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: lighter;
+		}
+
+		li {
+			display: inline;
+			padding: 15px;
+		}
+
+		li a {
+			color: white;
+			font-size: 20px;
+			text-decoration: none;
+
+		}
+
+		li a:hover {
+			color: #ccc;
+			text-decoration: none;
+
+		}
+
+		ul {
+			background-color: #00008B;
+			padding: 35px;
+			margin: 0;
+			text-align: center;
+
+		}
+
+		table {
+			margin: auto;
+			margin-top: 50px;
+			margin-bottom: 50px;
+
+		}
+
+		th,
+		h3 {
+			font-size: 20px;
+			background-color: #00008B;
+			color: white;
+			padding: 5px 50px;
+
+
+		}
+
+		h3 {
+			margin: auto;
+
+			margin-top: 100px;
+			text-align: center;
+			width: 34%;
+		}
+
+		td {
+			text-align: center;
+			background-color: #eee;
+			font-size: 18px;
+			padding: 5px 70px;
+			width: 150px;
+		}
+
+		form {
+			margin: 100px 30%;
+			width: 100%;
+		}
+
+		input {
+			margin: auto;
+
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<ul>
+
+			<li>
+
+				<a th:href="@{'/index'}">
+					<i class="fas fa-home"> </i> Home </a>
+			</li>
+			<li>
+
+				<a th:href="@{'/agenda'}">
+					<i class="fas fa-list"> </i> Agendamentos </a>
+			</li>
+			<li>
+				<a><i class="fas fa-hospital-user"> </i> Pacientes </a>
+			</li>
+			<li>
+				<a th:href="@{'/exames'}" ><i class="fas fa-diagnoses"> </i> Exames </ a >
+			</li>
+			<li>
+				<a th:href="@{'/plSaude'}"><i class="fas fa-hospital"> </i>Planos de Saude </a >
+			</li>
+		</ul>
+
+	</nav>
+
+	<h3>Agendar Exame</h3>
+
+	<div style="margin:0;width: 100%;">
+
+
+		<form method="POST" th:action="@{/novoAgendamento}">
+
+			<div style="margin:0;width: 100%;">
+				<form method="POST">
+					<label> Exame</label><br>
+						<select name="exame" required>
+							<span th:each="e: ${exame}">
+								<option class="form-control" th:text="${e.nome}" style="" th:value="${e.id}"></option>
+							</span>
+						</select><br>
+
+						<label>Paciente</label><br>
+							<select name="paciente" required>
+								<span th:each="p: ${paciente}">
+									<option class="form-control" th:text="${p.nome}" style="" th:value="${p.id}">
+									</option>
+								</span>
+							</select><br>
+
+							<label>Data</label><br>
+							<input name="data" type="text"><br>
+							<label>Hora</label><br>
+							<input name="hora" type="text" required><br>
+							
+							<button type="submit" id="btnCadastro" onclick="sucesso()"> Cadastrar </button>
+				</form>
+			</div>
+
+			<script>
+				function sucesso() {
+					alert('Paciente cadastrado com sucesso!')
+				}
+
+			</script>
+
+
+		</form>
+	</div>
+
+	<script>
+
+
+	</script>
+</body>
+
+
+</html>

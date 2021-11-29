@@ -1,0 +1,177 @@
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<script src="https://kit.fontawesome.com/56a20fa3a4.js" crossorigin="anonymous"></script>
+	<title>Home Page</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: lighter;
+		}
+
+		li {
+			display: inline;
+			padding: 15px;
+		}
+
+		li a {
+			color: white;
+			font-size: 20px;
+			text-decoration: none;
+
+		}
+
+		li a:hover {
+			color: #ccc;
+			text-decoration: none;
+
+		}
+
+		ul {
+			background-color: #00008B;
+			padding: 35px;
+			margin: 0;
+			text-align: center;
+
+		}
+
+		table {
+			margin: auto;
+			padding: 100px;
+			width: 50%;
+		}
+
+		th,h3 {
+			font-size: 20px;
+			background-color: #00008B;
+			color: white;
+			padding: 5px 50px;
+
+
+		}
+		h3{
+						margin:auto;
+
+			margin-top: 100px;
+			text-align: center;
+			width: 34%;
+		}
+
+		td {
+			text-align: center;
+			background-color: #eee;
+			font-size: 20px;
+			padding: 5px 70px;
+			width: 300px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<ul>
+
+			<li>
+
+				<a th:href="@{'/index'}">
+					<i class="fas fa-home"> </i> Home </a>
+			</li>
+			<li>
+
+				<a th:href="@{'/agenda'}">
+					<i class="fas fa-list"> </i> Agendamentos </a>
+			</li>
+			<li>
+				<a th:href="@{'/pacientes'}"> <i class="fas fa-hospital-user"> </i> Pacientes </a >
+			</li>
+			<li>
+				<a th:href="@{'/exames'}" ><i class="fas fa-diagnoses"> </i> Exames </ a >
+			</li>
+			<li>
+				<a th:href="@{'/plSaude'}"><i class="fas fa-hospital"> </i>Planos de Saude </a >
+			</li>
+		</ul>
+
+	</nav>
+
+
+<h3>Informações do Paciente</h3>
+
+
+	<table>
+	
+
+		<tbody>
+				
+		
+			<tr>
+				<th>Nome Completo</th>
+				<td> <span th:text="${detalhes.paciente.nome}"></span></td>
+			</tr>
+			<tr>
+				<th>RG</th>
+				<td> <span th:text="${detalhes.paciente.rg}"></span></td>
+			</tr>
+			<tr>
+				<th>CPF</th>
+				<td> <span th:text="${detalhes.paciente.cpf}"></span></td>
+			</tr>
+				
+			</tr>
+				<tr>
+				<th>Data de Nascimento</th>
+				<td> <span th:text="${detalhes.paciente.dataDeNasc}"></span></td>
+			</tr>
+				
+			<tr>
+				<th>Plano de Saúde</th>
+				<td> <span th:text="${detalhes.paciente.plSaude.nome}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+<hr style="width: 40%;margin:auto">
+<h3>Informações do Exame</h3>
+
+
+	<table>
+	
+
+		<tbody>
+		<tr>
+				<th>Tipo</th>
+				<td> <span th:text="${detalhes.exame.nome}"></span></td>
+
+			</tr>
+			<tr>
+				<th>Data</th>
+				<td> <span th:text="${detalhes.data}"></span></td>
+
+			</tr>
+				<tr>
+				<th>Hora</th>
+				<td> <span th:text="${detalhes.hora}"></span></td>
+
+			</tr>
+				
+			<tr>
+				<th>Descrição</th>
+				<td> <span th:text="${detalhes.exame.descricao}"></span></td>
+
+			</tr>
+			<tr>
+				<th>Recomendações</th>
+				<td> <span th:text="${detalhes.exame.recomendacoes}"></span></td>
+			</tr>
+		
+		</tbody>
+	</table>
+	
+	
+	
+</body>
+
+</html>

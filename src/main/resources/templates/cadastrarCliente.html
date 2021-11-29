@@ -1,0 +1,143 @@
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<script src="https://kit.fontawesome.com/56a20fa3a4.js" crossorigin="anonymous"></script>
+	<title>Home Page</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: lighter;
+		}
+
+		li {
+			display: inline;
+			padding: 15px;
+		}
+
+		li a {
+			color: white;
+			font-size: 20px;
+			text-decoration: none;
+
+		}
+
+		li a:hover {
+			color: #ccc;
+			text-decoration: none;
+
+		}
+
+		ul {
+			background-color: #00008B;
+			padding: 35px;
+			margin: 0;
+			text-align: center;
+
+		}
+
+		table {
+			margin: auto;
+			margin-top: 50px;
+			margin-bottom: 50px;
+
+		}
+
+		th,
+		h3 {
+			font-size: 20px;
+			background-color: #00008B;
+			color: white;
+			padding: 5px 50px;
+
+
+		}
+
+		h3 {
+			margin: auto;
+
+			margin-top: 100px;
+			text-align: center;
+			width: 34%;
+		}
+
+		td {
+			text-align: center;
+			background-color: #eee;
+			font-size: 18px;
+			padding: 5px 70px;
+			width: 150px;
+		}
+
+		form {
+			margin: 100px 30%;
+			width: 100%;
+		}
+
+		input {
+			margin: auto;
+
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<ul>
+
+			<li>
+
+				<a th:href="@{'/index'}">
+					<i class="fas fa-home"> </i> Home </a>
+			</li>
+			<li>
+
+				<a th:href="@{'/agenda'}">
+					<i class="fas fa-list"> </i> Agendamentos </a>
+			</li>
+			<li>
+				<a th:href="@{'/pacientes'}"> <i class="fas fa-hospital-user"> </i> Pacientes </a>
+			</li>
+			<li>
+				<a th:href="@{'/exames'}" ><i class="fas fa-diagnoses"> </i> Exames </ a >
+			</li>
+			<li>
+				<a th:href="@{'/plSaude'}"><i class="fas fa-hospital"> </i>Planos de Saude </a >
+			</li>
+		</ul>
+
+	</nav>
+
+	<h3>Cadastrar Paciente</h3>
+	<div style="margin:0;width: 100%;">
+		<form method="POST">
+			<label> Plano de Saúde</label><br>
+			<select name="plSaude" required>
+				<span th:each="p: ${plano}">
+					<option class="form-control" th:text="${p.nome}" style="" th:value="${p.id}"></option>
+				</span>
+			</select><br>
+			<label> Nome</label><br>
+			<input name="nome" type="text"><br>
+			<label> CPF</label><br>
+			<input name="cpf" type="text" placeholder="000.000.000-00" required><br>
+			<label> RG</label><br>
+			<input name="rg" type="text" placeholder="00.000.000-0"  required><br>
+			<label> Data de Nascimento</label><br>
+			<input name="dataDeNasc"  placeholder="dd/mm/aaaa" id="data"><br>
+			<button type="submit" id="btnCadastro" onclick="sucesso()"> Cadastrar </button>
+		</form>	 
+	</div>
+
+	<script>
+		document.getElementById("data").matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}$")
+		function sucesso(){
+			alert('Paciente cadastrado com sucesso!')
+		}
+		
+	</script>
+</body>
+
+
+</html>
